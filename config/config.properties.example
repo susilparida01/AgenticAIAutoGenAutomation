@@ -1,0 +1,39 @@
+# OpenAI Configuration
+OPENAI_API_KEY=your_openai_api_key_here
+MODEL_NAME=gpt-5-nano
+
+# 1. gpt-4.1-mini (~$0.40, low latency)
+# 2. gpt-4.1-nano (~$0.10, ultra low latency)
+# 3. gpt-5-mini (~$0.20 input, $1.00 output, balanced performance)
+# 4. gpt-5-nano (~$0.025 input, $0.20 output, high-volume simple tasks)
+
+# Jira Configuration
+JIRA_URL=https://your-domain.atlassian.net
+JIRA_USERNAME=your_jira_username_here
+JIRA_API_TOKEN=your_jira_api_token_here
+JIRA_PROJECTS_FILTER=SCRUM
+
+# MySQL Configuration
+MYSQL_HOST=localhost
+MYSQL_PORT=3306
+MYSQL_USER=your_mysql_user_here
+MYSQL_PASSWORD=your_mysql_password_here
+MYSQL_DATABASE=your_mysql_database_here
+
+# REST API Configuration
+REST_BASE_URL=
+
+# Filesystem Configuration
+FILESYSTEM_PATH=D:\path\to\AgenticAIAutoGen\Data\files
+
+# Browser Configuration
+BROWSER_URL=https://your-app-url.example.com/login
+BROWSER_USERNAME=your_browser_username_here
+BROWSER_PASSWORD=your_browser_password_here
+PLAYWRIGHT_HEADLESS=false
+
+# Python/UV Configuration
+# (Optional) Overrides for dynamic path resolution
+UV_PATH=
+SITE_PACKAGES_PATH=
+
