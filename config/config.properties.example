@@ -24,7 +24,7 @@ MYSQL_DATABASE=your_mysql_database_here
 REST_BASE_URL=
 
 # Filesystem Configuration
-FILESYSTEM_PATH=D:\path\to\AgenticAIAutoGen\Data\files
+FILESYSTEM_PATH=D:\path\to\AgenticAIAutoGenAutomation\Data\files
 
 # Browser Configuration
 BROWSER_URL=https://your-app-url.example.com/login
