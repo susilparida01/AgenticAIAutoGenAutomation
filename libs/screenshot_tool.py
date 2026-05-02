@@ -5,7 +5,7 @@ from autogen_core.tools import FunctionTool
 
 async def capture_screenshot(scenario_name: str, step_name: str) -> str:
     """
-    Generates a canonical screenshot path under reports/Screenshots.
+    Generates a canonical screenshot path under reports/screenshots.
     The agent should pass this path to browser_take_screenshot(filename=...).
     
     Args:
@@ -14,7 +14,7 @@ async def capture_screenshot(scenario_name: str, step_name: str) -> str:
     """
     # Canonical screenshot directory for all scenarios/reports.
     project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-    screenshot_dir = os.path.join(project_root, 'reports', 'Screenshots')
+    screenshot_dir = os.path.join(project_root, 'reports', 'screenshots')
     
     # Create the directory if it doesn't exist
     if not os.path.exists(screenshot_dir):
@@ -25,7 +25,7 @@ async def capture_screenshot(scenario_name: str, step_name: str) -> str:
     safe_scenario = scenario_name.replace(" ", "_").lower()
     safe_step = step_name.replace(" ", "_").lower()
     filename = f"{safe_scenario}_{safe_step}_{timestamp}.png"
-    rel_path = f"reports/Screenshots/{filename}"
+    rel_path = f"reports/screenshots/{filename}"
     
     try:
         # This tool only standardizes path output; actual capture is done by browser_take_screenshot.
@@ -37,5 +37,11 @@ async def capture_screenshot(scenario_name: str, step_name: str) -> str:
 capture_agent_screenshot = FunctionTool(
     capture_screenshot,
     name="capture_agent_screenshot",
-    description="Generates a reports/Screenshots filename for browser_take_screenshot."
+    description="Generates a reports/screenshots filename for browser_take_screenshot."
 )
+
+#############################################################################################
+
+
+
+

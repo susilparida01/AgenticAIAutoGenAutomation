@@ -64,8 +64,10 @@ class McpConfig:
             env={
                 "REST_BASE_URL": ConfigReader.get_property("REST_BASE_URL"),
                 "HEADER_Accept": "application/json"
-            } )
-        return McpWorkbench( rest_api_server_params )
+            },
+            read_timeout_seconds=60
+        )
+        return McpWorkbench( server_params=rest_api_server_params )
 
     @staticmethod
     def get_excel_workbench():
@@ -157,3 +159,13 @@ class McpConfig:
             read_timeout_seconds=60
         )
         return McpWorkbench( server_params=playwright_server_params )
+
+
+##################################################################################################
+
+# mc = McpConfig()
+# print(mc.get_filesystem_workbench())
+# print(mc.get_playwright_workbench())
+# print(mc.get_jira_workbench())
+# print(mc.get_filesystem_workbench())
+# print(mc.get_rest_api_workbench())

@@ -91,3 +91,10 @@ class ConfigReader:
         for key, value in items:
             if keys is None or key.upper() in [k.upper() for k in keys]:
                 os.environ[key.upper()] = value
+
+
+########################################################
+
+# cr = ConfigReader()
+# print(cr.get_site_packages_path())
+# print(cr.get_uv_path())

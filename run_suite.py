@@ -141,18 +141,20 @@ async def main():
             passed = True          # main() raises on failure (re_raise=True default)
         except Exception as exc:
             error_message = str(exc)
-            print(f"[Suite] ❌  {meta['name']} raised: {error_message}")
+            print(f"[Suite]  {meta['name']} raised: {error_message}")
         finally:
             elapsed = asyncio.get_event_loop().time() - started
             suite.add(_ScenarioResult(meta, passed, elapsed, error_message))
 
-    suite_path = suite.save_report()
-    webbrowser.open(f"file:///{suite_path.replace(os.sep, '/')}")
-    print(f"\n[Suite] 📊 Suite report → {suite_path}")
+    # suite_path = suite.save_report()
+    # webbrowser.open(f"file:///{suite_path.replace(os.sep, '/')}")
+    # print(f"\n[Suite] Suite report → {suite_path}")
 
 
 if __name__ == "__main__":
     asyncio.run(main())
+
+##############################################################################################
 
 ## Run Examples
 # python run_suite.py --list

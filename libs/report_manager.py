@@ -106,6 +106,21 @@ async def run_scenario_with_report(
     finally:
         reporter.finish(passed=passed, error_message=error_message)
         report_path = reporter.save_report()
+
+        # Stop any workbenches associated with agents in the team to avoid RuntimeWarning
+        # concerning the event loop being closed before MCP actors stop.
+        # Use _participants as participants is not public in this RoundRobinGroupChat version.
+        for agent in getattr(team, "_participants", []):
+            # Try public and private workbench attributes
+            workbenches = getattr(agent, "workbench", getattr(agent, "_workbench", None))
+            if workbenches:
+                if isinstance(workbenches, list):
+                    for wb in workbenches:
+                        if hasattr(wb, "stop"):
+                            await wb.stop()
+                elif hasattr(workbenches, "stop"):
+                    await workbenches.stop()
+
         await model_client.close()
 
     if caught_exception and re_raise:

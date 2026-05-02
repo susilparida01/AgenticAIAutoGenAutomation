@@ -34,18 +34,16 @@ async def main():
     browser_url  = os.getenv("BROWSER_URL")
 
     project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    screenshots_dir = os.path.join(project_root, "Reports", "Screenshots")
+    screenshots_dir = os.path.join(project_root, "reports", "screenshots")
     os.makedirs(screenshots_dir, exist_ok=True)
     error_shot = os.path.join(screenshots_dir, "scenario_02_invalid_login_error.png").replace("\\", "/")
 
     completion_token = "INVALID_LOGIN_VERIFIED"
 
-    automation_agent = await factory.create_automation_agent(system_message=(f"""
-    
-                                                You are a Playwright automation expert using MCP browser tools.
-                                                
-                                                Execute UI automation steps exactly as provided.  
-                                                                                              
+    automation_agent = await factory.create_automation_agent(system_message=(f"""    
+                                                You are a Playwright automation expert using MCP browser tools.                                                
+                                                Execute UI automation steps exactly as provided.           
+                                                                                                                                     
                                                 Rules:
                                                 1. You MUST use Playwright MCP tools to execute actions in a real browser.
                                                 2. First call browser_navigate to open the URL.

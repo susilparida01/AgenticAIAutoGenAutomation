@@ -36,18 +36,16 @@ async def main():
     browser_pass = os.getenv("BROWSER_PASSWORD")
 
     project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    screenshots_dir = os.path.join(project_root, "Reports", "Screenshots")
+    screenshots_dir = os.path.join(project_root, "reports", "screenshots")
     os.makedirs(screenshots_dir, exist_ok=True)
     dashboard_shot = os.path.join(screenshots_dir, "scenario_01_dashboard.png").replace("\\", "/")
-    login_page_shot = os.path.join(screenshots_dir, "scenario_01_login_page.png").replace("\\", "/")
 
     completion_token = "VALID_LOGIN_VERIFIED"
 
     automation_agent = await factory.create_automation_agent(system_message=(f"""
                                                 You are a Playwright automation expert using MCP browser tools.
-
                                                 Execute UI automation steps exactly as provided.
-
+                                                
                                                 Rules:
                                                 1. You MUST use Playwright MCP tools to execute actions in a real browser.
                                                 2. Follow the task instructions step by step.
@@ -56,12 +54,13 @@ async def main():
                                                 5. Validate expected results (success or error messages).
                                                 6. Clearly report PASS/FAIL for each validation.
                                                 7. Stop only after all steps are completed.
-
+                                                
                                                 Final response format:
                                                 - Login Status: PASS|FAIL
                                                 - Logout Status: PASS|FAIL
                                                 - Dashboard Screenshot: <absolute path>
                                                 - Login Page Screenshot: <absolute path>
+                                                
                                                 Only after completing all UI actions, end with token: {completion_token}
 
                                             """))
@@ -82,11 +81,10 @@ async def main():
                     1. Navigate to {browser_url}. Wait for the login page is ready.
                     2. Enter username: {browser_user}
                     3. Enter password: {browser_pass}
-                    4. Click Login. Wait for dashboard page.
+                    4. Click Login. Wait for the dashboard page to load and validate successful login by checking for a specific element or text "Dashboard".
                     5. Capture screenshot with:
                        browser_take_screenshot(filename="{dashboard_shot}")
-                    6. Click Logout. Wait for login page.
-                    5. browser_take_screenshot(filename="{login_page_shot}")
+                    6. Click Logout. Validate successful logout by checking for the presence of the login form.
 
                     Return the final result in the required format.
                     Use the completion token from your system instructions only after all steps are done.

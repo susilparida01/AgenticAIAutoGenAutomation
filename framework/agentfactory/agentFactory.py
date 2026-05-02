@@ -100,3 +100,10 @@ class AgentFactory:
         )
 
         return excel_agent
+
+################################################################################################
+
+# af = AgentFactory()
+# print(af.create_automation_agent())
+# print(af.create_database_agent())
+# print(af.create_issue_analyst())

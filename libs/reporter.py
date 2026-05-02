@@ -491,11 +491,11 @@ class ScenarioReporter:
         screenshot_html = ""
         screenshot_rel_path = None
 
-        if "reports/Screenshots/" in step.content:
+        if "reports/screenshots/" in step.content:
             try:
-                filename = step.content.split("reports/Screenshots/")[1].strip().split()[0]
+                filename = step.content.split("reports/screenshots/")[1].strip().split()[0]
                 filename = filename.rstrip(")]")
-                screenshot_rel_path = f"../Screenshots/{filename}"
+                screenshot_rel_path = f"../screenshots/{filename}"
             except Exception:
                 pass
         elif "reports/screenshots/" in step.content:
@@ -509,7 +509,7 @@ class ScenarioReporter:
             match = re.search(r"\(([^)]+\.png)\)", step.content)
             if match:
                 raw_path = match.group(1).replace("\\", "/")
-                if raw_path.startswith("reports/Screenshots/"):
+                if raw_path.startswith("reports/screenshots/"):
                     screenshot_rel_path = f"../{raw_path.replace('reports/', '', 1)}"
                 elif raw_path.startswith("reports/screenshots/"):
                     screenshot_rel_path = f"../{raw_path.replace('reports/', '', 1)}"

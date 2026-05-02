@@ -1,5 +1,4 @@
 import asyncio
-
 from autogen_agentchat.conditions import TextMentionTermination
 
 # Discovered automatically by run_suite.py
@@ -71,7 +70,7 @@ async def main():
             1. Query the table: departments.
             2. Retrieve department name data.
             3. Print the department records in a clear table format.
-            
+                        
             Validation:
             1. Verify the table contains the following department names:
                - Bakery

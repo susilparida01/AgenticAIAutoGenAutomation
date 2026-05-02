@@ -23,8 +23,8 @@ memory.json
 # Generated reports and screenshots
 reports/result/*
 !reports/result/.gitkeep
-reports/Screenshots/*
-!reports/Screenshots/.gitkeep
+reports/screenshots/*
+!reports/screenshots/.gitkeep
 
 # Logs and temp files
 *.log
